@@ -14,8 +14,8 @@ body {
   height: 97vh;
   display: grid;
   grid-template-columns: 1fr 1.1fr;
-  grid-template-rows: 15% 65% 20%;
-  gap: 20px;
+  grid-template-rows: 10% 60% 30%;
+  gap: 13px;
   padding: 20px;
   grid-template-areas:
     "header header"
@@ -45,7 +45,23 @@ body {
 
 .chart { grid-area: chart; }
 .list { grid-area: list; }
-.summary { grid-area: summary; }
+.summary { 
+  grid-area: summary;
+  overflow-y: auto;
+}
+
+.summary::-webkit-scrollbar {
+  width: 8px;
+}
+
+.summary p {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.summary p:last-child {
+  margin-bottom: 0;
+}
 
 .chart-display {
   width: 100%;
@@ -78,26 +94,25 @@ body {
 
 /* Style for the selected time span */
 .time-selector span.active-time {
-  background-color: #28a745; /* Match header green for active state */
+  background-color: #28a745; 
   color: #ffffff;
 }
 
 /* Styling for the table inside the .list container */
 .list {
-  /* This makes the list scrollable if content overflows */
   overflow-y: auto;
 }
 
 .stock-table {
   width: 100%;
-  border-collapse: collapse; /* Removes space between cell borders */
+  border-collapse: collapse; 
   font-size: 16px;
 }
 
 .stock-table th, .stock-table td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #3a414b; /* Adds a line between rows */
+  border-bottom: 1px solid #3a414b;
 }
 
 .stock-table th {
@@ -113,16 +128,16 @@ body {
 
 /* Styling for the profit/loss values */
 .profit.positive {
-  color: #28a745; /* Green text for profit */
+  color: #28a745;
   font-weight: bold;
 }
 
 .profit.negative {
-  color: #dc3545; /* Red text for loss */
+  color: #dc3545;
   font-weight: bold;
 }
 
-/* Add a smooth transition and pointer cursor to all data rows */
+/*Smooth transition and pointer cursor to all data rows */
 .stock-table tbody tr {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
@@ -130,11 +145,11 @@ body {
 
 /* Style for the row when you hover over it */
 .stock-table tbody tr:hover {
-  background-color: #343a40; /* Light grey background on hover */
+  background-color: #343a40;
 }
 
 /* Style for a row that has been clicked (selected) */
 .stock-table tbody tr.selected {
-  background-color: #3a414b; /* Light blue background for selected */
+  background-color: #3a414b;
   font-weight: bold;
 }
