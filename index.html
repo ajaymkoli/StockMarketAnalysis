@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Market Analysis</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="grid-container">
+      <h1 class="header">Stock Market Analysis</h1>
+      <div class="chart">
+        <div class="chart-display"></div>
+        <div class="time-selector">
+          <span class="active-time">1 month</span>
+          <span>3 months</span>
+          <span>1 Year</span>
+          <span>5 Years</span>
+        </div>
+      </div>
+      <div class="list">
+        <table class="stock-table">
+          <thead>
+            <tr>
+              <th>Stock Name</th>
+              <th>Book Value</th>
+              <th>Profit/Loss</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="selected">
+              <td>AAPL</td>
+              <td>₹1,850.45</td>
+              <td class="profit positive">+₹25.10</td>
+            </tr>
+            <tr>
+              <td>MFST</td>
+              <td>₹3,890.15</td>
+              <td class="profit negative">-₹12.55</td>
+            </tr>
+            <tr>
+              <td>GOOGL</td>
+              <td>₹1,575.60</td>
+              <td class="profit positive">+₹5.80</td>
+            </tr>
+            <tr>
+              <td>AMZN</td>
+              <td>₹1,620.00</td>
+              <td class="profit positive">+₹18.20</td>
+            </tr>
+            <tr>
+              <td>PYPL</td>
+              <td>₹1,152.30</td>
+              <td class="profit negative">-₹2.75</td>
+            </tr>
+            <tr>
+              <td>TSLA</td>
+              <td>₹1,152.30</td>
+              <td class="profit negative">-₹2.75</td>
+            </tr>
+            <tr>
+              <td>JPM</td>
+              <td>₹1,152.30</td>
+              <td class="profit positive">₹356.54</td>
+            </tr>
+            <tr>
+              <td>NVDA</td>
+              <td>₹1,152.30</td>
+              <td class="profit positive">₹2750.44</td>
+            </tr>
+            <tr>
+              <td>NFLX</td>
+              <td>₹1,152.30</td>
+              <td class="profit negative">-₹100.75</td>
+            </tr>
+            <tr>
+              <td>DIS</td>
+              <td>₹1,152.30</td>
+              <td class="profit positive">₹20.75</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="summary">Summary:</div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
