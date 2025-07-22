@@ -75,10 +75,35 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = this.fullApiResponse?.stocksData?.[0]?.[this.currentStock]?.[this.currentTimeRange];
       const chartDisplayDiv = document.querySelector('.chart-display');
 
-      if (!data) {
+
+      // --- NEW FEATURE CODE START ---
+      const chartStatsDiv = document.querySelector('.chart-stats');
+
+      // If data is not available, clear both the chart and the stats display.
+      if (!data || !data.value || data.value.length === 0) {
         chartDisplayDiv.innerHTML = `<p style="text-align:center; color:#8a93a2;">Chart data not available.</p>`;
+        chartStatsDiv.innerHTML = '';
         return;
       }
+
+      // Calculating the peak (high) and low values from the data array.
+      const peakValue = Math.max(...data.value);
+      const lowValue = Math.min(...data.value);
+
+      // Creating the HTML content for the stats.
+      const statsHTML = `
+        <div class="stat">
+          <div class="stat-label">High</div>
+          <div class="stat-value">$${peakValue.toFixed(2)}</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Low</div>
+          <div class="stat-value">$${lowValue.toFixed(2)}</div>
+        </div>
+      `;
+      // Injecting the stats HTML into its container.
+      chartStatsDiv.innerHTML = statsHTML;
+      // --- NEW FEATURE CODE END ---
 
       const trace = {
         x: data.timeStamp.map(ts => new Date(ts * 1000)), y: data.value,
@@ -95,20 +120,20 @@ document.addEventListener('DOMContentLoaded', () => {
       Plotly.newPlot(chartDisplayDiv, [trace], layout, { responsive: true });
     },
 
-    // Renders the summary for the currently selected stock.
+    // Rendering the summary for the currently selected stock.
     renderSummary: function () {
       const summaryDiv = document.querySelector('.summary');
 
-      // Check if both required data sources are available.
+      // Checking if both required data sources are available.
       if (!this.summaryData?.stocksProfileData?.length || !this.stockStatsData?.stocksStatsData?.length) {
         summaryDiv.innerHTML = '<p>Required data is not available.</p>';
         return;
       }
 
-      // Get data from the 'profile' source for the summary text.
+      // Getting data from the 'profile' source for the summary text.
       const stockProfile = this.summaryData.stocksProfileData[0][this.currentStock];
 
-      // Get data from the 'stats' source for the numbers.
+      // Getting data from the 'stats' source for the numbers.
       const stockStats = this.stockStatsData.stocksStatsData[0][this.currentStock];
 
       // We need both objects to build the complete summary.

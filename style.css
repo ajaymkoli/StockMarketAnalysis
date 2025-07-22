@@ -5,7 +5,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
   background-color: #161a1e;
   color: #eaecef;
 }
@@ -36,16 +37,18 @@ body {
   border-bottom: 2px solid #28a745;
 }
 
-.chart, .list, .summary {
+.chart,
+.list,
+.summary {
   background-color: #1f2428;
   padding: 20px;
   border-radius: 8px;
   border: 1px solid #3a414b;
 }
 
-.chart { grid-area: chart; }
+.chart { grid-area: chart; position: relative; }
 .list { grid-area: list; }
-.summary { 
+.summary {
   grid-area: summary;
   overflow-y: auto;
 }
@@ -64,6 +67,7 @@ body {
 }
 
 .chart-display {
+  position: relative; 
   width: 100%;
   height: 90%;
   background-color: #161a1e;
@@ -94,7 +98,7 @@ body {
 
 /* Style for the selected time span */
 .time-selector span.active-time {
-  background-color: #28a745; 
+  background-color: #28a745;
   color: #ffffff;
 }
 
@@ -105,11 +109,12 @@ body {
 
 .stock-table {
   width: 100%;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   font-size: 16px;
 }
 
-.stock-table th, .stock-table td {
+.stock-table th,
+.stock-table td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #3a414b;
@@ -152,4 +157,35 @@ body {
 .stock-table tbody tr.selected {
   background-color: #3a414b;
   font-weight: bold;
+}
+
+/* ADDITIONAL FEATURE */
+.chart-stats {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  z-index: 10;
+  display: flex;
+  gap: 25px;
+  background-color: rgba(31, 36, 40, 0.7); 
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid #28a745;
+}
+
+.stat {
+  text-align: left;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #8a93a2;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #eaecef;
 }
