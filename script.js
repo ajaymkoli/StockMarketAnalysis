@@ -106,7 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
       // --- NEW FEATURE CODE END ---
 
       const trace = {
-        x: data.timeStamp.map(ts => new Date(ts * 1000)), y: data.value,
+        x: data.timeStamp.map(timestamp => {
+          let new_timestamp = new Date(timestamp * 1000).toLocaleDateString();
+          return new_timestamp;
+        }), y: data.value,
         type: 'scatter', mode: 'lines', line: { color: '#28a745', width: 2 }
       };
 
